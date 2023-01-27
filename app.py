@@ -27,7 +27,11 @@ def main():
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = Image.fromarray(image)
             st.image(image, caption="웹캠에서 찍은 이미지", use_column_width=True)
+            # Resize
+            image = image.resize((224,224))
+            # Normalization
             image = np.array(image)
+            image = image/255.
             image = image.transpose(2,0,1)
             image = torch.tensor(image,dtype=torch.float32)
             image = image.unsqueeze(0)
@@ -52,7 +56,11 @@ def main():
         if image_file is not None:
             image = Image.open(image_file)
             st.image(image, caption="업로드한 이미지", use_column_width=True)
+            # Resize
+            image = image.resize((224,224))
+            # Normalization
             image = np.array(image)
+            image = image/255.
             image = image.transpose(2,0,1)
             image = torch.tensor(image,dtype=torch.float32)
             image = image.unsqueeze(0)
