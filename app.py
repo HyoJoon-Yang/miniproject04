@@ -1,8 +1,8 @@
 import streamlit as st
-import torch
-from PIL import Image
+from io import BytesIO
 import numpy as np
-import cv2
+from PIL import Image
+import torch
 
 def main():
     st.set_page_config(page_title="잎사귀 질병 분류 웹앱", page_icon=":guardsman:", layout="wide")
